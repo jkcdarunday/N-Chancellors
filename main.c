@@ -56,7 +56,7 @@ int printBoard(int *board, int n, int sCount){
     printf("%d:\n", sCount);
     for(i=0;i<n;i++){
         for(j=0;j<n;j++)
-            if(j == getPosition(board, i))
+            if(i == getPosition(board, j))
                 if(board[i] < 0) printf(" I");
                 else printf(" C");
             else printf(" _");
@@ -103,7 +103,7 @@ int main(void)
             int tmp;
             fscanf(fp, " %d", &tmp);
             if(tmp > 0)
-                if(board[j]==0) board[j] = -(k+1);
+                if(board[k]==0) board[k] = -(j+1);
                 else hasConflict = 1;
         }
         if(checkBoard(board, n) || hasConflict)
