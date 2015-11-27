@@ -48,6 +48,7 @@ int checkConflict(int *board, int n, int x){
 
 int findnextSlot(int *board, int n, int x){
     while(board[x]!=0 && x<n) x++;
+    if(x>=n) return n-1;
     return x;
 }
 
@@ -80,6 +81,7 @@ int nChancellors(int *board, int n){
             if (x < n-1) x = findnextSlot(board, n, x);
             else printBoard(board, n, ++solutions);
         }else{
+            if(board[n-1]<0 && x==n-1) printBoard(board, n, ++solutions);
             if(board[x]>0) board[x] = 0;
             if(board[--x]<0) x--;
         }
@@ -107,7 +109,7 @@ int main(void)
                 else hasConflict = 1;
         }
         if(checkBoard(board, n) || hasConflict)
-            printf("UH OH! There is a conflict in the initial board.\nNumber of solutinos: 0\n\n");
+            printf("UH OH! There is a conflict in the initial board.\nNumber of solutions: 0\n\n");
         else
             printf("Number of solutions: %d\n\n", nChancellors(board, s));
     }
