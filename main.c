@@ -57,7 +57,7 @@ int printBoard(int *board, int n, int sCount){
     for(i=0;i<n;i++){
         for(j=0;j<n;j++)
             if(i == getPosition(board, j))
-                if(board[i] < 0) printf(" I");
+                if(board[j] < 0) printf(" I");
                 else printf(" C");
             else printf(" _");
         printf("\n");
